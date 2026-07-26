@@ -1,0 +1,8 @@
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_hook.wav'
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_p1.wav'
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_k1.wav'
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_p2.wav'
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_k2.wav'
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_alive.wav'
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_zero.wav'
+file '/home/runner/work/threads-agent/threads-agent/video/out/audio/pad_cta.wav'
