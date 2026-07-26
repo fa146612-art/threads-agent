@@ -37,6 +37,7 @@ jobs:
       - name: Run one agent cycle
         env:
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          INSTA_TOKEN: ${{ secrets.INSTA_TOKEN }}
         run: python bot/run.py
 
       - name: Commit any changes

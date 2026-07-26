@@ -14,6 +14,10 @@ import json, os, pathlib, sys, datetime
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from threads_api import Threads, ThreadsError
+try:
+    from instagram_api import Instagram, InstagramError
+except ImportError:                              # pragma: no cover
+    Instagram = None
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 INBOX = ROOT / "inbox.json"
@@ -45,6 +49,73 @@ def log(event, **kw):
 
 
 SCHEDULE = ROOT / "schedule.json"
+IG_INBOX = ROOT / "ig_inbox.json"
+
+_ig_client = None
+
+
+def _ig():
+    global _ig_client
+    if _ig_client is None:
+        if Instagram is None:
+            raise RuntimeError("instagram_api unavailable")
+        _ig_client = Instagram()
+    return _ig_client
+
+
+def fetch_instagram(handled):
+    """Pull Instagram comments and DMs so the agent can answer them.
+
+    Nothing here writes a reply - a template reply is exactly what we are
+    avoiding. The agent reads ig_inbox.json and writes the words itself.
+    """
+    if Instagram is None or not os.environ.get("INSTA_TOKEN", "").strip():
+        return {"skipped": "no INSTA_TOKEN"}
+    try:
+        ig = _ig()
+        me = ig.username
+    except Exception as e:                       # noqa: BLE001
+        log("ig_auth_failed", error=str(e))
+        return {"error": str(e)}
+
+    new_comments, new_dms, posts = [], [], []
+    try:
+        for m in ig.my_media(limit=15):
+            posts.append({"id": m["id"], "permalink": m.get("permalink"),
+                          "caption": (m.get("caption") or "")[:120],
+                          "comments": m.get("comments_count", 0),
+                          "likes": m.get("like_count", 0)})
+            if not m.get("comments_count"):
+                continue
+            for c in ig.comments(m["id"]):
+                if c.get("username") == me or ("ig:" + c["id"]) in handled:
+                    continue
+                new_comments.append({
+                    "comment_id": c["id"], "from": c.get("username"),
+                    "text": c.get("text"), "at": c.get("timestamp"),
+                    "on_post_id": m["id"], "on_post": (m.get("caption") or "")[:120]})
+    except Exception as e:                       # noqa: BLE001
+        log("ig_comments_failed", error=str(e))
+
+    try:
+        for conv in ig.conversations(limit=15):
+            for msg in ig.messages(conv["id"], limit=10):
+                frm = (msg.get("from") or {})
+                if frm.get("username") == me:
+                    continue
+                if ("ig:" + msg["id"]) in handled:
+                    continue
+                new_dms.append({
+                    "message_id": msg["id"], "conversation_id": conv["id"],
+                    "recipient_id": frm.get("id"), "from": frm.get("username"),
+                    "text": (msg.get("message") or ""), "at": msg.get("created_time")})
+    except Exception as e:                       # noqa: BLE001
+        log("ig_dms_failed", error=str(e))
+
+    write(IG_INBOX, {
+        "fetched_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "new_comments": new_comments, "new_dms": new_dms, "recent_posts": posts})
+    return {"comments": len(new_comments), "dms": len(new_dms)}
 
 
 def due_items():
@@ -97,6 +168,13 @@ def main():
             elif kind == "delete":
                 t.delete(item["media_id"])
                 mid = item["media_id"]
+            elif kind == "ig_reply":
+                mid = _ig().reply_comment(item["comment_id"], item["text"])
+                handled.add("ig:" + item["comment_id"])
+            elif kind == "ig_dm":
+                _ig().send_dm(item["recipient_id"], item["text"])
+                mid = item["recipient_id"]
+                handled.add("ig:" + item.get("message_id", item["recipient_id"]))
             else:
                 failed.append({**item, "error": f"unknown type {kind!r}"})
                 continue
@@ -157,6 +235,10 @@ def main():
             **t.insights(p["id"]),
         })
     write(METRICS, metrics)
+
+    # ------------------------------------------------------------ 4. INSTAGRAM
+    ig_stat = fetch_instagram(handled)
+    log("instagram", **{k: v for k, v in ig_stat.items()})
 
     state["handled_reply_ids"] = sorted(handled)[-5000:]
     state["published"] = (state.get("published", []) + sent)[-500:]
