@@ -90,10 +90,12 @@ def counter(target, unit="", label="", color="#F0736F", digits=None):
 </div><div class="handle">@zero.won_ai</div></div>
 <script>
 window.__anim = (t) => {{
+  const el = document.getElementById('num');
+  if (!el) return;                       // 장면이 바뀌면 조용히 넘어간다
   const p = Math.min(Math.max((t-0.15)/1.35,0),1);
   const e = 1-Math.pow(1-p,3);
   const v = Math.round({target}*e);
-  document.getElementById('num').textContent =
+  el.textContent =
     {'v.toLocaleString()' if (digits is None) else 'v.toFixed(%d)' % digits};
 }};
 </script>"""
@@ -132,6 +134,11 @@ async def render_scene(pg, html, seconds, outdir, prefix, fps=FPS, motion=None):
     프레임 수가 3분의 1로 줄고 결과는 같다.
     """
     outdir.mkdir(parents=True, exist_ok=True)
+    # 앞 장면의 스크립트가 window 에 남아 다음 장면을 건드리는 걸 막는다
+    try:
+        await pg.evaluate("() => { window.__anim = null; }")
+    except Exception:                                  # noqa: BLE001
+        pass
     await pg.set_content(f"<style>{BASE}</style>{html}", wait_until="networkidle")
     await pg.wait_for_timeout(260)                    # 폰트 로드
 
