@@ -55,4 +55,3 @@ pathlib.Path(__file__).parent.parent.joinpath("ig_probe_result.json").write_text
 ok = sum(1 for v in out["checks"].values() if v.get("ok"))
 print(f"\n요약: 성공 {ok} / 전체 {len(out['checks'])}")
 
-# probe rerun 1704

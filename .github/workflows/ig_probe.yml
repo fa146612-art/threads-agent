@@ -22,7 +22,7 @@ jobs:
       - run: pip install --quiet requests
       - name: Probe Instagram
         env:
-          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          INSTA_TOKEN: ${{ secrets.INSTA_TOKEN }}
         run: python bot/ig_probe.py
       - name: Commit result
         run: |

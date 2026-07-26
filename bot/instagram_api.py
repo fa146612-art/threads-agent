@@ -19,9 +19,9 @@ class InstagramError(RuntimeError):
 
 class Instagram:
     def __init__(self, token=None):
-        self.token = (token or os.environ.get("IG_TOKEN", "")).strip()
+        self.token = (token or os.environ.get("INSTA_TOKEN", "")).strip()
         if not self.token:
-            raise InstagramError("IG_TOKEN is empty. Set it as a repository secret.")
+            raise InstagramError("INSTA_TOKEN is empty. Set it as a repository secret.")
         self._uid = None
         self._username = None
 
