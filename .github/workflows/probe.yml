@@ -7,9 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "1이면 검색만, 0이면 실제로 답글까지 단다"
+        description: "1이면 읽기만, 0이면 남의 글에 실제로 답글을 단다"
         required: false
         default: "1"
+      delete_id:
+        description: "삭제를 시험할 게시물 id (비우면 건너뜀)"
+        required: false
+        default: ""
   push:
     paths:
       - "bot/probe_search.py"
@@ -31,6 +35,7 @@ jobs:
         env:
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
           DRY_RUN: ${{ github.event.inputs.dry_run || '1' }}
+          DELETE_ID: ${{ github.event.inputs.delete_id || '18073817216403078' }}
         run: python bot/probe_search.py
       - name: Commit result
         run: |
