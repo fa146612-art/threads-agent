@@ -5,6 +5,12 @@ on:
     # every 30 minutes
     - cron: "*/30 * * * *"
   workflow_dispatch: {}      # lets you run it by hand from the Actions tab
+  push:
+    # only when the code changes - the agent's own state commits must not
+    # retrigger the workflow, or it would loop forever
+    paths:
+      - "bot/**"
+      - ".github/workflows/**"
 
 permissions:
   contents: write
@@ -39,6 +45,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "nothing changed"
           else
-            git commit -m "agent cycle $(date -u +%Y-%m-%dT%H:%MZ)"
+            git commit -m "agent cycle $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
             git push
           fi
