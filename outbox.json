@@ -1,9 +1,1 @@
-{
-  "items": [
-    {
-      "type": "delete",
-      "media_id": "18073817216403078",
-      "error": "500 code=10: Application does not have permission for this action"
-    }
-  ]
-}
+{"items": []}
