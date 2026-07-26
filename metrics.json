@@ -1,1 +1,16 @@
-{"posts": []}
+{
+  "updated_at": "2026-07-26T14:06:17.776418+00:00",
+  "limits": {
+    "quota_usage": 0,
+    "config": {
+      "quota_total": 250,
+      "quota_duration": 86400
+    },
+    "reply_quota_usage": 0,
+    "reply_config": {
+      "quota_total": 1000,
+      "quota_duration": 86400
+    }
+  },
+  "posts": []
+}
