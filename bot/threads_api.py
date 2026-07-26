@@ -97,6 +97,21 @@ class Threads:
         except ThreadsError:
             return {}
 
+    SEARCH_FIELDS = "id,text,username,timestamp,permalink,media_type"
+
+    def search(self, q, limit=25, recent=True, media_type=None):
+        """Find other people's public posts by keyword.
+
+        This is the growth engine: commenting on posts from accounts 2-10x
+        your size is the single highest-leverage action available, and Threads
+        surfaces your replies in your own followers' feeds too.
+        """
+        params = {"q": q, "search_type": "RECENT" if recent else "TOP",
+                  "fields": self.SEARCH_FIELDS, "limit": limit}
+        if media_type:
+            params["media_type"] = media_type
+        return self.get("keyword_search", **params).get("data", [])
+
     # ---------------------------------------------------------- writes
     def publish(self, text, reply_to_id=None, image_url=None):
         """Create a container then publish it. Returns the new media id.

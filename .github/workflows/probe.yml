@@ -1,0 +1,46 @@
+name: probe-search
+
+# 키워드 검색과 남의 글 답글이 실제로 되는지 확인하는 일회성 워크플로.
+# 결과는 probe_result.json 에 커밋된다.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "1이면 검색만, 0이면 실제로 답글까지 단다"
+        required: false
+        default: "1"
+  push:
+    paths:
+      - "bot/probe_search.py"
+      - ".github/workflows/probe.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet requests
+      - name: Probe
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || '1' }}
+        run: python bot/probe_search.py
+      - name: Commit result
+        run: |
+          git config user.name  "threads-agent"
+          git config user.email "actions@github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "no change"
+          else
+            git commit -m "probe 결과 [skip ci]"
+            git pull --rebase origin main || true
+            git push
+          fi
