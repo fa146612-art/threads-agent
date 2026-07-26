@@ -5,3 +5,5 @@
 {"at": "2026-07-26T15:02:22.361618+00:00", "event": "send_failed", "type": "delete", "error": "500 code=10: Application does not have permission for this action"}
 {"at": "2026-07-26T15:02:33.330649+00:00", "event": "sent", "type": "post", "id": "18091259069087013"}
 {"at": "2026-07-26T15:02:34.473358+00:00", "event": "cycle_done", "sent": 1, "failed": 1, "new_replies": 0}
+{"at": "2026-07-26T15:41:24.175732+00:00", "event": "send_failed", "type": "delete", "error": "500 code=10: Application does not have permission for this action"}
+{"at": "2026-07-26T15:41:25.789079+00:00", "event": "cycle_done", "sent": 0, "failed": 1, "new_replies": 0}
