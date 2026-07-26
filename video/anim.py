@@ -124,13 +124,30 @@ def shot(img_b64, cap, tag="", stamp_at=None):
 
 
 # ---------------------------------------------------------------- 렌더
-async def render_scene(pg, html, seconds, outdir, prefix, fps=FPS):
-    """시간을 코드로 되감으며 프레임을 뜬다. 렌더 속도와 무관하게 타이밍이 정확하다."""
+async def render_scene(pg, html, seconds, outdir, prefix, fps=FPS, motion=None):
+    """시간을 코드로 되감으며 프레임을 뜬다. 타이밍은 렌더 속도와 무관하게 정확하다.
+
+    움직임은 보통 1.5~2초면 끝난다. 그 뒤는 정지 화면이라 다시 그릴 이유가 없어서,
+    움직이는 구간만 캡처하고 나머지는 마지막 프레임을 복사한다.
+    프레임 수가 3분의 1로 줄고 결과는 같다.
+    """
     outdir.mkdir(parents=True, exist_ok=True)
     await pg.set_content(f"<style>{BASE}</style>{html}", wait_until="networkidle")
     await pg.wait_for_timeout(260)                    # 폰트 로드
-    n = int(seconds * fps)
-    for i in range(n):
+
+    total = int(seconds * fps)
+    if motion is None:                                 # 애니메이션이 끝나는 시점
+        motion = await pg.evaluate("""() => {
+            let end = 0;
+            document.getAnimations().forEach(a => {
+              const t = a.effect && a.effect.getComputedTiming();
+              if (t) end = Math.max(end, ((t.delay||0) + (t.activeDuration||0)) / 1000);
+            });
+            return Math.min(Math.max(end, 0.8), 3.0);
+        }""")
+    live = min(int((motion + 0.35) * fps), total)
+
+    for i in range(live):
         t = i / fps
         await pg.evaluate("""(t) => {
             document.getAnimations().forEach(a => {
@@ -139,7 +156,13 @@ async def render_scene(pg, html, seconds, outdir, prefix, fps=FPS):
             if (window.__anim) window.__anim(t);
         }""", t)
         await pg.screenshot(path=str(outdir / f"{prefix}_{i:04d}.png"))
-    return n
+
+    if live < total:                                   # 남은 구간은 마지막 프레임 복사
+        last = outdir / f"{prefix}_{live-1:04d}.png"
+        data = last.read_bytes()
+        for i in range(live, total):
+            (outdir / f"{prefix}_{i:04d}.png").write_bytes(data)
+    return total
 
 
 def encode(frames_dir, pattern, out, fps=FPS):
