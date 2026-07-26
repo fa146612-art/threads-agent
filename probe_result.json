@@ -1,0 +1,25 @@
+{
+  "search": {
+    "AI 부업": {
+      "ok": false,
+      "error": "500 code=10: Application does not have permission for this action"
+    },
+    "스레드": {
+      "ok": false,
+      "error": "500 code=10: Application does not have permission for this action"
+    },
+    "부업": {
+      "ok": false,
+      "error": "500 code=10: Application does not have permission for this action"
+    },
+    "챗GPT": {
+      "ok": false,
+      "error": "500 code=10: Application does not have permission for this action"
+    }
+  },
+  "reply_test": {
+    "ok": false,
+    "error": "검색 결과가 없어 시험 불가"
+  },
+  "dry_run": true
+}
