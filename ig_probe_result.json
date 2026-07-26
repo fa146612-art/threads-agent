@@ -1,3 +1,30 @@
 {
-  "error": "IG_TOKEN is empty. Set it as a repository secret."
+  "checks": {
+    "whoami": {
+      "ok": true,
+      "result": {
+        "id": "17841442917895093",
+        "username": "zero.won_ai"
+      }
+    },
+    "my_media": {
+      "ok": true,
+      "result": [
+        {
+          "id": "18190179160386168",
+          "type": "IMAGE",
+          "comments": 0,
+          "caption": ""
+        }
+      ]
+    },
+    "comments": {
+      "ok": true,
+      "result": []
+    },
+    "conversations": {
+      "ok": true,
+      "result": []
+    }
+  }
 }
