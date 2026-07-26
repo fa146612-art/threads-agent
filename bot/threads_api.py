@@ -98,9 +98,17 @@ class Threads:
             return {}
 
     # ---------------------------------------------------------- writes
-    def publish(self, text, reply_to_id=None):
-        """Create a container then publish it. Returns the new media id."""
-        params = {"media_type": "TEXT", "text": text}
+    def publish(self, text, reply_to_id=None, image_url=None):
+        """Create a container then publish it. Returns the new media id.
+
+        An image roughly triples engagement, so image_url is worth using
+        whenever there is anything worth showing. The URL must be publicly
+        reachable - raw.githubusercontent.com works and costs nothing.
+        """
+        if image_url:
+            params = {"media_type": "IMAGE", "image_url": image_url, "text": text}
+        else:
+            params = {"media_type": "TEXT", "text": text}
         if reply_to_id:
             params["reply_to_id"] = reply_to_id
         container = self.post(f"{self.uid}/threads", **params)

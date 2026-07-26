@@ -55,11 +55,12 @@ def main():
     for item in outbox.get("items", []):
         kind = item.get("type")
         try:
+            img = item.get("image_url")
             if kind == "reply":
-                mid = t.publish(item["text"], reply_to_id=item["reply_to_id"])
+                mid = t.publish(item["text"], reply_to_id=item["reply_to_id"], image_url=img)
                 handled.add(item["reply_to_id"])
             elif kind == "post":
-                mid = t.publish(item["text"])
+                mid = t.publish(item["text"], image_url=img)
             elif kind == "thread":
                 mid = t.publish_thread(item["parts"])
             else:

@@ -11,6 +11,8 @@ on:
     paths:
       - "bot/**"
       - ".github/workflows/**"
+      - "outbox.json"        # queueing a post publishes it within a minute
+      - "media/**"
 
 permissions:
   contents: write
