@@ -1,2 +1,4 @@
 {"at": "2026-07-26T14:06:18.086625+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 0}
 {"at": "2026-07-26T14:10:46.693704+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 0}
+{"at": "2026-07-26T14:13:31.799641+00:00", "event": "sent", "type": "post", "id": "18073817216403078"}
+{"at": "2026-07-26T14:13:32.923578+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
