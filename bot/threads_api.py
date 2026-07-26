@@ -138,6 +138,10 @@ class Threads:
                 time.sleep(PUBLISH_DELAY * (attempt + 1))
         raise ThreadsError(f"publish failed: {last}")
 
+    def delete(self, media_id):
+        """Remove one of our own posts. Needs threads_delete."""
+        return self._call("DELETE", f"{media_id}")
+
     def publish_thread(self, parts, reply_to_id=None):
         ids, prev = [], reply_to_id
         for part in parts:

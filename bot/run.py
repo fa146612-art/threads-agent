@@ -63,11 +63,15 @@ def main():
                 mid = t.publish(item["text"], image_url=img)
             elif kind == "thread":
                 mid = t.publish_thread(item["parts"])
+            elif kind == "delete":
+                t.delete(item["media_id"])
+                mid = item["media_id"]
             else:
                 failed.append({**item, "error": f"unknown type {kind!r}"})
                 continue
-            sent.append({"type": kind, "id": mid, "preview": (item.get("text") or
-                         " / ".join(item.get("parts", [])))[:90]})
+            sent.append({"type": kind, "id": mid,
+                         "preview": (item.get("text") or item.get("media_id") or
+                                     " / ".join(item.get("parts", [])))[:90]})
             log("sent", type=kind, id=mid)
         except ThreadsError as e:
             failed.append({**item, "error": str(e)})
