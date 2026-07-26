@@ -4,7 +4,12 @@ name: build-short
 # 결과물은 media/short_latest.mp4 로 커밋된다.
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "video 또는 voices"
+        required: false
+        default: "video"
   push:
     paths:
       - "video/**"
@@ -30,10 +35,16 @@ jobs:
           pip install --quiet edge-tts playwright
           playwright install --with-deps chromium
 
+      - name: 목소리 비교본
+        if: github.event.inputs.job == 'voices' || github.event_name == 'push'
+        run: python video/voicetest.py || echo "목소리 비교 실패(무시)"
+
       - name: 영상 빌드
+        if: github.event.inputs.job != 'voices'
         run: python video/build.py
 
       - name: 결과 확인
+        if: github.event.inputs.job != 'voices'
         run: |
           ls -la media/short_latest.mp4
           ffprobe -v error -show_entries format=duration,size \
@@ -41,8 +52,11 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: short
-          path: media/short_latest.mp4
+          name: media
+          path: |
+            media/short_latest.mp4
+            media/voice_compare.mp3
+          if-no-files-found: ignore
 
       - name: 커밋
         run: |
