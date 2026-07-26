@@ -113,12 +113,15 @@ class Threads:
         return self.get("keyword_search", **params).get("data", [])
 
     # ---------------------------------------------------------- writes
-    def publish(self, text, reply_to_id=None, image_url=None):
+    def publish(self, text, reply_to_id=None, image_url=None,
+                topic_tag=None, to_instagram=False):
         """Create a container then publish it. Returns the new media id.
 
-        An image roughly triples engagement, so image_url is worth using
-        whenever there is anything worth showing. The URL must be publicly
-        reachable - raw.githubusercontent.com works and costs nothing.
+        image_url   - an image roughly triples engagement. Must be publicly
+                      reachable; raw.githubusercontent.com works and is free.
+        topic_tag   - one per post, 1-50 chars, no '.' or '&'. With no followers
+                      this is the only discovery surface we control.
+        to_instagram- also posts to the linked Instagram account.
         """
         if image_url:
             params = {"media_type": "IMAGE", "image_url": image_url, "text": text}
@@ -126,6 +129,10 @@ class Threads:
             params = {"media_type": "TEXT", "text": text}
         if reply_to_id:
             params["reply_to_id"] = reply_to_id
+        if topic_tag:
+            params["topic_tag"] = topic_tag[:50].replace(".", "").replace("&", "")
+        if to_instagram:
+            params["auto_publish_text"] = "true"
         container = self.post(f"{self.uid}/threads", **params)
         time.sleep(PUBLISH_DELAY)
         last = None

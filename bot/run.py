@@ -44,6 +44,31 @@ def log(event, **kw):
     print(json.dumps(rec, ensure_ascii=False))
 
 
+SCHEDULE = ROOT / "schedule.json"
+
+
+def due_items():
+    """Pull anything from schedule.json whose time has come.
+
+    Keeping the calendar in the repo means posts go out on time even when no
+    agent session is awake - the Actions cron is the clock.
+    """
+    plan = read(SCHEDULE, {"items": []})
+    now = datetime.datetime.now(datetime.timezone.utc)
+    due, keep = [], []
+    for it in plan.get("items", []):
+        at = it.get("publish_after")
+        try:
+            when = datetime.datetime.fromisoformat(at.replace("Z", "+00:00"))
+        except (AttributeError, ValueError):
+            keep.append(it)
+            continue
+        (due if when <= now else keep).append(it)
+    if due:
+        write(SCHEDULE, {"items": keep})
+    return due
+
+
 def main():
     t = Threads()
     state = read(STATE, {"handled_reply_ids": [], "published": []})
@@ -51,16 +76,22 @@ def main():
 
     # ------------------------------------------------------------ 1. SEND
     outbox = read(OUTBOX, {"items": []})
+    scheduled = due_items()
+    if scheduled:
+        outbox = {"items": outbox.get("items", []) + scheduled}
+        log("schedule_due", count=len(scheduled))
     sent, failed = [], []
     for item in outbox.get("items", []):
         kind = item.get("type")
         try:
             img = item.get("image_url")
+            tag = item.get("topic_tag")
+            ig = bool(item.get("to_instagram"))
             if kind == "reply":
                 mid = t.publish(item["text"], reply_to_id=item["reply_to_id"], image_url=img)
                 handled.add(item["reply_to_id"])
             elif kind == "post":
-                mid = t.publish(item["text"], image_url=img)
+                mid = t.publish(item["text"], image_url=img, topic_tag=tag, to_instagram=ig)
             elif kind == "thread":
                 mid = t.publish_thread(item["parts"])
             elif kind == "delete":
