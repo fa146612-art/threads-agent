@@ -51,3 +51,6 @@
 {"at": "2026-07-27T07:21:59.962985+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
 {"at": "2026-07-27T08:03:40.874906+00:00", "event": "instagram", "comments": 0, "dms": 0}
 {"at": "2026-07-27T08:03:40.875170+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 1}
+{"at": "2026-07-27T08:18:12.981508+00:00", "event": "sent", "type": "reply", "id": "18109034750326754"}
+{"at": "2026-07-27T08:18:15.722031+00:00", "event": "instagram", "comments": 0, "dms": 0}
+{"at": "2026-07-27T08:18:15.722298+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
