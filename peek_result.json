@@ -1,0 +1,38 @@
+{
+  "target": "juvin950",
+  "checks": {
+    "ig_whoami": {
+      "ok": true,
+      "result": {
+        "user_id": "17841442917895093",
+        "username": "zero.won_ai",
+        "account_type": "BUSINESS",
+        "id": "27962296583410282"
+      }
+    },
+    "ig_business_discovery": {
+      "ok": false,
+      "status": 400,
+      "code": 100,
+      "error": "Tried accessing nonexisting field (business_discovery)"
+    },
+    "fb_business_discovery": {
+      "ok": false,
+      "status": 400,
+      "code": 190,
+      "error": "Invalid OAuth access token - Cannot parse access token"
+    },
+    "threads_keyword_search": {
+      "ok": false,
+      "status": 500,
+      "code": 10,
+      "error": "Application does not have permission for this action"
+    },
+    "threads_profile_lookup": {
+      "ok": false,
+      "status": 400,
+      "code": 100,
+      "error": "Unsupported get request. Object with ID 'juvin950' does not exist, cannot be loaded due to missing permissions, or does not support this operation"
+    }
+  }
+}
