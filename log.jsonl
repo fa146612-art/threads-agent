@@ -83,3 +83,5 @@
 {"at": "2026-07-27T15:21:30.224146+00:00", "event": "sent", "type": "reply", "id": "17886277917671267"}
 {"at": "2026-07-27T15:21:35.651149+00:00", "event": "instagram", "comments": 0, "dms": 0}
 {"at": "2026-07-27T15:21:35.651462+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
+{"at": "2026-07-27T17:03:19.211368+00:00", "event": "instagram", "comments": 0, "dms": 0}
+{"at": "2026-07-27T17:03:19.211791+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 0}
