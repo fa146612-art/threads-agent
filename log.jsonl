@@ -46,3 +46,6 @@
 {"at": "2026-07-27T06:56:26.334799+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
 {"at": "2026-07-27T07:09:04.507767+00:00", "event": "instagram", "comments": 0, "dms": 0}
 {"at": "2026-07-27T07:09:04.508070+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 1}
+{"at": "2026-07-27T07:21:57.877561+00:00", "event": "sent", "type": "reply", "id": "18142868938557400"}
+{"at": "2026-07-27T07:21:59.962713+00:00", "event": "instagram", "comments": 0, "dms": 0}
+{"at": "2026-07-27T07:21:59.962985+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
