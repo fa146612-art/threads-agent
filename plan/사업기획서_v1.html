@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>사업 기획서 v1 — 지원금 브리핑</title>
+<style>
+  :root{--bg:#0E1014;--fg:#F2F4F8;--sub:#8A93A3;--accent:#5B8CFF;--good:#4CC38A;
+        --warn:#F0736F;--line:#232833;--card:#151920}
+  @media (prefers-color-scheme:light){
+    :root{--bg:#F4F5F7;--fg:#14171C;--sub:#5B6472;--accent:#2563EB;--good:#0E9F6E;
+          --warn:#D64545;--line:#E1E4EA;--card:#FFFFFF}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:16px/1.75 -apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo",
+            "Malgun Gothic",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 20px 96px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:34px}
+  .kicker{color:var(--accent);font-weight:700;letter-spacing:.06em;font-size:13px}
+  h1{font-size:29px;line-height:1.3;margin:8px 0 6px;font-weight:800}
+  .sub{color:var(--sub);font-size:15px;margin:0}
+  h2{font-size:21px;margin:52px 0 14px;font-weight:800;
+     border-left:4px solid var(--accent);padding-left:12px}
+  h3{font-size:16px;margin:28px 0 8px;font-weight:700}
+  p,li{color:var(--fg)}
+  ul,ol{padding-left:20px} li{margin:7px 0}
+  .muted{color:var(--sub)}
+  strong{font-weight:800}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{color:var(--sub);font-weight:700;font-size:13px;background:var(--card)}
+  .box{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;
+       padding:18px 20px;margin:22px 0;background:var(--card)}
+  .box.good{border-left-color:var(--good)}
+  .box.warn{border-left-color:var(--warn)}
+  .box p{margin:0 0 8px}.box p:last-child{margin:0}
+  .num{font-weight:800;color:var(--accent)}
+  .dead{color:var(--warn);font-weight:700}
+  .live{color:var(--good);font-weight:700}
+  .src{color:var(--sub);font-size:12.5px}
+  a{color:var(--accent)}
+  .check{list-style:none;padding-left:0}
+  .check li{padding:12px 14px;border:1px solid var(--line);border-radius:10px;
+            background:var(--card);margin:10px 0}
+  .check b{display:block;margin-bottom:3px}
+  footer{margin-top:70px;padding-top:22px;border-top:1px solid var(--line);
+         color:var(--sub);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">ZERO.WON_AI · 사업 기획서 v1</div>
+  <h1>지원금 브리핑 — 몰라서 못 받는 돈을 대신 찾아주는 구독 서비스</h1>
+  <p class="sub">작성: 2026-07-27 · 조사 출처 41건 · 결정 전 검토용</p>
+</header>
+
+<div class="box">
+  <p><strong>한 줄 요약.</strong> 소상공인·자영업자가 "몰라서 못 받는" 정부지원금을
+  AI가 매일 추적해서 <strong>월 4,900원 구독</strong>으로 파는 채널을
+  <strong>네이버 프리미엄콘텐츠</strong>에 엽니다. 보조로, 이미 만들어 둔 장부 템플릿을
+  <strong>크몽</strong>에 진열합니다. 오수원님이 해주실 건 <strong>계정 개설 2건</strong>이고,
+  이후 운영은 전부 제가 합니다.</p>
+</div>
+
+<h2>1. 조사에서 확인된 사실</h2>
+
+<h3>수요는 정부가 증명해 줬습니다</h3>
+<ul>
+  <li>중기부가 2026년 6월 소상공인 정책 알림톡을 시작했는데, 알림을 보내자
+      지방정부 지원사업 신청이 <span class="num">4~20배</span> 늘었습니다.
+      기사 제목이 "공고 올려도 몰랐다"입니다.
+      <span class="src">— 전자신문 2026-06</span></li>
+  <li>정책 알림 앱 웰로는 누적 이용자 <span class="num">523만 명</span>,
+      기업용 유료 버전(웰로비즈)은 <span class="num">월 36만~180만 원</span>을 받고
+      고객사 7,000곳을 모았습니다. 이 정보에 돈을 내는 시장이 실재합니다.
+      <span class="src">— 매일경제 2025-12, wellobiz.com</span></li>
+</ul>
+
+<h3>어디서 팔아야 하는지도 확인됐습니다</h3>
+<table>
+  <tr><th>채널</th><th>개인 가능</th><th>수수료</th><th>구독(월정액)</th><th>판정</th></tr>
+  <tr><td><strong>네이버 프리미엄콘텐츠</strong></td><td>가능 (본인인증만)</td>
+      <td>약 10.6%</td><td>지원 (100원~50만원)</td>
+      <td class="live">주력 — 네이버 검색 노출 + 정기결제</td></tr>
+  <tr><td><strong>크몽</strong></td><td>가능</td><td>~70만원 구간 16.4%</td>
+      <td>없음 (단건)</td><td class="live">보조 — 템플릿 자동발송 진열</td></tr>
+  <tr><td>메일리</td><td>가능</td><td>20%</td><td>지원</td>
+      <td class="muted">보류 — 수수료 2배, 검색 유입 없음</td></tr>
+  <tr><td>스티비</td><td>유료 요금제 필요</td><td>3.5%</td><td>지원</td>
+      <td class="dead">탈락 — 월 8,900원+ 고정비 (무료 원칙 위반)</td></tr>
+  <tr><td>포스타입</td><td>가능</td><td>13~30%</td><td>지원</td>
+      <td class="muted">보류 — 창작물 중심, 정보 콘텐츠와 안 맞음</td></tr>
+  <tr><td>Gumroad</td><td>한국 정산 불명확</td><td>10%+$0.50</td><td>—</td>
+      <td class="muted">보류 — 정산 경로 확인 안 됨</td></tr>
+</table>
+<p class="src">네이버: 플랫폼 8% + 결제 2.64%, 익월 21일 정산, 입점 검수 3~5영업일.
+크몽: 개인 전문가 등록 가능, 파일 자동발송 지원.</p>
+
+<h3>탈락시킨 아이디어와 이유</h3>
+<table>
+  <tr><th>아이디어</th><th>탈락 사유</th></tr>
+  <tr><td>주식·시황 유료 구독</td>
+      <td>네이버에서 제일 잘 팔리는 분야는 맞지만(상위 채널 1~4위가 전부 주식·재테크),
+      유료 투자 정보는 <strong>유사투자자문업 신고 대상</strong>이 될 수 있고
+      인물 신뢰가 필요합니다. AI 계정이 첫 상품으로 할 게 아닙니다.</td></tr>
+  <tr><td>AI 요약 뉴스레터</td>
+      <td>국내외 어디에도 "AI 요약"을 구독료로 파는 성공 사례가 없습니다.
+      구독자 200만의 The Rundown AI도 뉴스레터는 무료, 수익은 광고입니다.
+      무료 챗GPT로 셀프 대체가 되기 때문입니다. <span class="dead">필터에 걸려 사망.</span></td></tr>
+  <tr><td>노하우 전자책</td>
+      <td>"글로 된 노하우"는 챗GPT가 즉석에서 만들어 줍니다. 크몽에서도
+      살아남는 건 실전 데이터·템플릿 파일뿐. 그래서 전자책이 아니라
+      <strong>템플릿 파일만</strong> 보조로 팝니다.</td></tr>
+  <tr><td>시니어 유료 콘텐츠</td>
+      <td>결제력 증가는 숫자로 확인되지만(60대 전자책 결제 21배 증가),
+      "시니어 유료 디지털 구독"이 성립한 사례를 못 찾았습니다.
+      검증 안 된 시장에 먼저 들어가지 않습니다. 콘텐츠 소재로만 씁니다.</td></tr>
+</table>
+
+<h2>2. 주력 상품 — 지원금 브리핑</h2>
+
+<div class="box good">
+  <p><strong>상품.</strong> 매일 아침, 어제 새로 올라온 정부·지자체 지원사업 공고 중
+  소상공인·예비창업자에게 해당하는 것만 골라서 ① 한 줄 요약 ② 받을 수 있는 돈
+  ③ 자격 조건 해설 ④ 마감 임박 리마인드를 정리해 발행. 주 5회 이상, 월 4,900원.</p>
+</div>
+
+<h3>무료 챗GPT 필터 통과 근거</h3>
+<p>챗GPT는 <strong>오늘 올라온 공고</strong>를 모릅니다. 매일 갱신되는 공고를 수집해서
+자격 조건을 해설하고 마감일을 관리해 주는 건 크롤링 인프라가 있어야 합니다.
+저는 그 인프라를 이미 갖고 있습니다.</p>
+
+<h3>무료 경쟁자가 있는데 왜 되나 — 솔직한 분석</h3>
+<ul>
+  <li>웰로 앱(무료)과 정부 알림톡(무료)이 있습니다. 이건 사실이고 숨기지 않겠습니다.</li>
+  <li>그런데 무료 알림이 이미 있는데도 "몰라서 못 받았다"가 정부 공인 페인포인트입니다.
+      알림은 오는데 <strong>공고문이 안 읽히기 때문</strong>입니다. 수십 쪽 HWP,
+      자격 조건 표, 가점 항목 — 이걸 읽고 "내가 되는지" 판단하는 게 진짜 장벽입니다.</li>
+  <li>우리가 파는 건 알림이 아니라 <strong>해석</strong>입니다. "당신이 되는지 3줄로,
+      안 되면 왜 안 되는지 1줄로." 웰로비즈가 이 해석을 기업에 월 36만 원에 팝니다.
+      우리는 그걸 개인 자영업자에게 월 4,900원에 파는 겁니다.</li>
+</ul>
+
+<h3>실행 가능성 — 이미 있는 것</h3>
+<ul>
+  <li><a href="https://www.bizinfo.go.kr/web/lay1/program/S1T175C174/apiDetail.do?id=bizinfoApi">기업마당 공고 오픈API</a>와
+      <a href="https://nidview.k-startup.go.kr/view/public/kisedKstartupService/announcementInformation">K-Startup 공고 오픈API</a>가
+      공식 무료 제공됩니다. 크롤링조차 필요 없습니다.</li>
+  <li>매일 자동 수집·발행할 GitHub Actions 인프라는 이미 돌아가고 있습니다
+      (지금 스레드 계정을 굴리는 그 시스템입니다).</li>
+  <li>발행 원고는 제가 매일 씁니다. 오수원님 노동력 0.</li>
+</ul>
+
+<h3>수익 시뮬레이션 — 부풀리지 않은 버전</h3>
+<table>
+  <tr><th>구독자</th><th>월 매출</th><th>수수료 제외 후</th><th>비고</th></tr>
+  <tr><td>10명</td><td>49,000원</td><td>약 43,800원</td><td>1~2개월 차 현실적 목표</td></tr>
+  <tr><td>70명</td><td>343,000원</td><td class="num">약 306,600원</td><td><strong>목표선 — 월 30만 원</strong></td></tr>
+  <tr><td>300명</td><td>1,470,000원</td><td>약 1,314,000원</td><td>네이버 상위 채널은 1,350명도 있음</td></tr>
+</table>
+<p class="muted">참고: 미국주식 사관학교가 월 3,900원 × 1,350명 = 월 500만 원 수익
+(2022년 인터뷰 실측). 저가 구독 × 다수가 성립하는 시장입니다.
+단, 그 채널은 사람이고 팔로워 기반이 있었습니다. 우리는 0에서 시작합니다.
+몇 주 만에 안 됩니다. 몇 달 걸립니다.</p>
+
+<h2>3. 보조 상품 — 크몽 템플릿 진열</h2>
+<ul>
+  <li>이미 만들어 둔 <strong>사업자 장부 엑셀</strong>(날짜 걸친 예약 매출 자동 배분 —
+      직접 검증 완료)을 크몽에 등록. 가격 15,000~29,000원, 파일 자동발송이라
+      등록 후엔 방치해도 팔립니다.</li>
+  <li>브리핑 구독자에게 자연스럽게 노출 → 채널 간 상호 유입.</li>
+  <li>단발 매출이지만 진열형이라 "지속"에 부합. 실패해도 손실 0원.</li>
+</ul>
+
+<h2>4. 마케팅 — 어디서 어떻게 사람을 모으나</h2>
+<ol>
+  <li><strong>네이버 검색 (핵심).</strong> 프리미엄콘텐츠 글은 네이버 검색에 노출됩니다.
+      "소상공인 지원금", "청년창업 지원사업" 같은 검색어는 매일 검색량이 발생하고,
+      검색하는 사람 = 이미 돈 찾는 사람이라 전환이 가장 좋습니다.
+      주 2회는 무료 공개글로 발행해서 검색 유입 → 유료 전환 구조를 만듭니다.</li>
+  <li><strong>스레드/인스타 (이미 운영 중).</strong> 지금 계정 콘텐츠를
+      "AI가 오늘 찾은 지원금" 시리즈로 전환 — 매일 공고 1건을 무료로 풀고
+      "나머지 4건은 브리핑에"로 연결. 실패담 콘텐츠도 계속 갑니다.
+      계정 서사(주인이 돈 벌어오래서)와 상품(돈 찾아주는 AI)이 정확히 맞물립니다.</li>
+  <li><strong>블루스카이.</strong> 남의 글에 직접 댓글 가능한 유일한 곳.
+      자영업 관련 글에 도움 되는 답을 달며 신뢰 축적 (스팸 아니고 개별 작성).</li>
+  <li><strong>안 하는 것.</strong> 광고비 지출(원칙 위반), DM 영업(스팸),
+      "월 천만 원" 류 과장(원칙 위반).</li>
+</ol>
+
+<h2>5. 오수원님이 해주실 것 — 이게 전부입니다</h2>
+<ul class="check">
+  <li><b>① 네이버 프리미엄콘텐츠 입점 신청 (약 15분)</b>
+      contents.premium.naver.com → 창작센터 → 개인 회원 가입(본인인증)
+      → 채널 개설 신청. 채널명·소개글·운영계획서 문구는 제가 전부 써 드립니다.
+      검수 3~5영업일. <span class="muted">매출이 나면 그때 정산 계좌를 등록합니다.</span></li>
+  <li><b>② 크몽 판매자(개인 전문가) 등록 (약 10분)</b>
+      kmong.com → 전문가 등록(본인인증). 상품 상세페이지·파일은 제가 다 만듭니다.</li>
+  <li><b>③ 공공데이터포털 API 키 발급 (약 10분)</b>
+      data.go.kr 가입 → 기업마당·K-Startup 공고 API 활용 신청(무료, 자동 승인)
+      → 발급된 키를 GitHub 시크릿 <code style="font-size:13px">BIZINFO_KEY</code>로 등록.
+      등록 방법은 그때 한 단계씩 안내드립니다.</li>
+</ul>
+<p>③이 끝나는 순간부터 수집·집필·발행·홍보·댓글 응대까지 제가 매일 돌립니다.</p>
+
+<h2>6. 리스크 — 미리 말씀드립니다</h2>
+<div class="box warn">
+  <p>① <strong>네이버 입점 검수에서 거절될 수 있습니다.</strong> AI 운영 채널에 대한
+  명시 규정은 없지만(조사 결과 금지 조항도 없음) 검수는 네이버 재량입니다.
+  거절 시 재신청 3회까지 가능하고, 최종 거절되면 메일리(수수료 20%)로 갑니다.</p>
+  <p>② <strong>초반 구독자는 매우 느리게 붙습니다.</strong> 0명인 기간이 몇 주
+  이상일 수 있습니다. 그 기간에도 무료글 재고가 쌓여 검색 자산이 됩니다.</p>
+  <p>③ <strong>세금.</strong> 개인 판매자 소득은 오수원님이 종합소득세 신고 대상입니다.
+  연 수입이 커지면 사업자등록이 필요해질 수 있습니다 — 그건 좋은 문제입니다.</p>
+</div>
+
+<h2>7. 일정</h2>
+<table>
+  <tr><th>주차</th><th>내용</th></tr>
+  <tr><td>1주</td><td>오수원님 세팅 ①②③ + 제가 채널 소개·운영계획서 작성,
+      브리핑 자동 수집 파이프라인 구축, 창간호 원고 5편 비축</td></tr>
+  <tr><td>2주</td><td>검수 통과 시 발행 시작 (주 5회) + 스레드 콘텐츠 전환 + 크몽 상품 등록</td></tr>
+  <tr><td>3~4주</td><td>무료글 검색 유입 측정 → 제목·주제 조정. 구독 전환율 공개 보고</td></tr>
+  <tr><td>이후</td><td>매주 일요일 구독자 수·매출·유입 경로 정기 보고 (숫자 그대로)</td></tr>
+</table>
+
+<footer>
+  이 기획서의 모든 숫자에는 출처가 있고, 추정치는 추정치라고 적었습니다.
+  승인해 주시면 1주차 작업을 바로 시작합니다. 수정 지시도 환영합니다.
+  — zero.won_ai
+</footer>
+
+</div>
+</body>
+</html>
