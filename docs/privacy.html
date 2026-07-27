@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>개인정보처리방침 | zero.won_ai</title>
+<style>
+ body{max-width:760px;margin:0 auto;padding:48px 24px 96px;
+   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;
+   line-height:1.75;color:#1a1a1a;background:#fff}
+ h1{font-size:28px;margin-bottom:4px}
+ h2{font-size:19px;margin-top:40px;border-top:1px solid #e5e5e5;padding-top:24px}
+ .meta{color:#777;font-size:14px;margin-bottom:32px}
+ ul{padding-left:20px} li{margin:6px 0}
+ code{background:#f4f4f5;padding:2px 6px;border-radius:4px;font-size:13px}
+ .en{color:#555;font-size:14px;border-left:3px solid #e5e5e5;padding-left:14px;margin-top:8px}
+</style>
+</head>
+<body>
+
+<h1>개인정보처리방침</h1>
+<div class="meta">서비스명: zero.won_ai (Threads / Instagram 자동 운영 봇)<br>
+최종 수정일: 2026년 7월 27일<br>
+문의: fa146612@gmail.com</div>
+
+<h2>1. 개요</h2>
+<p>본 애플리케이션은 운영자 본인이 소유한 단일 Threads 계정(@zero.won_ai)과 연결된 Instagram 계정을 자동으로 운영하기 위한 개인용 도구입니다. 제3자에게 서비스를 제공하지 않으며, 회원가입 기능이 없습니다.</p>
+<div class="en">This application is a personal automation tool that operates a single Threads account (@zero.won_ai) and its linked Instagram account, both owned by the operator. It does not provide services to third parties and has no user sign-up.</div>
+
+<h2>2. 수집하는 정보</h2>
+<ul>
+<li><b>운영자 계정의 액세스 토큰</b> — GitHub Actions Secrets에 암호화 저장. 코드나 저장소에 평문으로 기록되지 않습니다.</li>
+<li><b>운영자 계정이 게시한 글의 ID·본문·지표</b> — 조회수, 좋아요, 답글 수.</li>
+<li><b>운영자 계정 글에 달린 공개 답글 및 수신한 다이렉트 메시지</b> — 답변을 작성하기 위해 처리합니다. 작성자 ID와 본문을 포함합니다.</li>
+</ul>
+<p>주민등록번호, 결제정보, 위치정보, 연락처 목록은 일절 수집하지 않습니다.</p>
+
+<h2>3. 이용 목적</h2>
+<ul>
+<li>운영자 계정의 게시물 발행 및 예약</li>
+<li>운영자 계정에 달린 답글·메시지에 대한 개별 답변 작성</li>
+<li>운영자 본인의 계정 성과 확인</li>
+</ul>
+<p>광고 타게팅, 프로파일링, 자동 의사결정, 제3자 판매·공유·대여는 하지 않습니다.</p>
+
+<h2>4. 보관 및 파기</h2>
+<ul>
+<li>답글·메시지 데이터는 답변 작성 후 <b>최대 30일</b> 보관하고 자동 삭제됩니다.</li>
+<li>액세스 토큰은 만료 또는 운영자의 연결 해제 시 즉시 폐기됩니다.</li>
+<li>보관 위치는 GitHub 비공개 워크플로 환경 및 저장소 내 JSON 파일이며, 개인 식별정보는 공개 저장소에 커밋하지 않습니다.</li>
+</ul>
+
+<h2>5. 제3자 제공</h2>
+<p>수집한 정보를 제3자에게 제공하지 않습니다. 다만 서비스 운영에 다음 처리 인프라를 이용합니다.</p>
+<ul>
+<li>Meta Platforms (Threads API, Instagram API) — 게시 및 답글 수신</li>
+<li>GitHub, Inc. (Actions, Repository) — 코드 실행 및 데이터 저장</li>
+<li>Anthropic PBC (Claude) — 답변 문장 생성</li>
+</ul>
+
+<h2>6. 이용자의 권리</h2>
+<p>본 앱과 상호작용한 이용자(운영자 계정에 답글이나 메시지를 보낸 분)는 언제든지 본인의 데이터에 대한 열람·삭제를 요청할 수 있습니다. <code>fa146612@gmail.com</code> 으로 요청하시면 <b>7일 이내</b>에 해당 데이터를 삭제하고 결과를 회신합니다.</p>
+<p>데이터 삭제 안내: <a href="./data-deletion.html">데이터 삭제 요청 방법</a></p>
+
+<h2>7. 안전성 확보 조치</h2>
+<ul>
+<li>모든 API 호출은 HTTPS로만 이루어집니다.</li>
+<li>토큰은 암호화된 시크릿 저장소에만 보관하며 로그에 출력하지 않습니다.</li>
+<li>저장소에 커밋되는 파일에서 개인 식별정보를 제외합니다.</li>
+</ul>
+
+<h2>8. AI 이용 고지</h2>
+<p>본 계정의 게시물과 답글은 AI가 작성합니다. 이 사실을 숨기지 않으며, 프로필과 게시물에 명시합니다.</p>
+
+<h2>9. 변경 고지</h2>
+<p>본 방침이 변경될 경우 본 페이지에 수정일과 함께 게시합니다.</p>
+
+</body>
+</html>
