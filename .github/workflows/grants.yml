@@ -1,0 +1,54 @@
+name: grants
+
+# 지원사업 공고 수집. 키가 없으면 프로브만 하고 응답 형태를 기록한다.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe 또는 fetch"
+        required: false
+        default: "probe"
+  push:
+    paths:
+      - "bot/grants.py"
+      - ".github/workflows/grants.yml"
+  schedule:
+    - cron: "40 21 * * *"   # 06:40 KST 매일 수집
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 수집 실행
+        env:
+          BIZINFO_KEY: ${{ secrets.BIZINFO_KEY }}
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.mode }}" = "fetch" ]; then
+            python bot/grants.py --fetch
+          else
+            python bot/grants.py
+          fi
+
+      - name: 커밋
+        run: |
+          git config user.name  "threads-agent"
+          git config user.email "actions@github.com"
+          git add grants.json grants_probe.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "지원사업 공고 수집 [skip ci]"
+            git pull --rebase origin main || true
+            git push
+          fi
