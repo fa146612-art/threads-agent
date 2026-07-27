@@ -201,7 +201,18 @@ def main():
         posts_seen.append({"id": p["id"], "text": (p.get("text") or "")[:200],
                            "at": p.get("timestamp"), "permalink": p.get("permalink")})
         try:
-            for r in t.replies(p["id"]):
+            rows, seen_ids = [], set()
+            try:
+                rows.extend(t.conversation(p["id"]))
+            except ThreadsError as e:
+                log("conversation_failed", post=p["id"], error=str(e))
+            rows.extend(t.replies(p["id"]))
+            for r in rows:
+                if not r.get("id") or r["id"] in seen_ids:
+                    continue
+                seen_ids.add(r["id"])
+                if r["id"] == p["id"]:
+                    continue
                 if r.get("username") == t.username:
                     continue
                 if r["id"] in handled:

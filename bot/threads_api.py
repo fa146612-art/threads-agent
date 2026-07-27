@@ -82,6 +82,18 @@ class Threads:
         return self.get(f"{media_id}/replies", fields=REPLY_FIELDS,
                         reverse="false").get("data", [])
 
+    def conversation(self, media_id):
+        """Every reply under one of our posts, nested ones included.
+
+        /replies only returns top-level replies. When someone answers our
+        reply instead of the post, it never appears there - the insight count
+        says 3 while the inbox says 0, and a real conversation is lost. This
+        endpoint returns the whole flattened thread, so we use it first and
+        fall back to /replies if it is unavailable.
+        """
+        return self.get(f"{media_id}/conversation", fields=REPLY_FIELDS,
+                        reverse="false").get("data", [])
+
     def insights(self, media_id):
         try:
             data = self.get(f"{media_id}/insights", metric=INSIGHT_FIELDS).get("data", [])
