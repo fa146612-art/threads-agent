@@ -73,3 +73,5 @@
 {"at": "2026-07-27T12:31:12.154750+00:00", "event": "sent", "type": "post", "id": "18108559163104067"}
 {"at": "2026-07-27T12:31:15.301074+00:00", "event": "instagram", "comments": 0, "dms": 0}
 {"at": "2026-07-27T12:31:15.301400+00:00", "event": "cycle_done", "sent": 2, "failed": 0, "new_replies": 0}
+{"at": "2026-07-27T13:59:33.028595+00:00", "event": "instagram", "comments": 0, "dms": 0}
+{"at": "2026-07-27T13:59:33.028875+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 1}
