@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-07-27T14:49:52.124161+00:00",
+  "updated_at": "2026-07-27T15:21:31.762786+00:00",
   "limits": {
-    "quota_usage": 3,
+    "quota_usage": 2,
     "config": {
       "quota_total": 250,
       "quota_duration": 86400
@@ -19,7 +19,7 @@
       "at": "2026-07-26T22:35:28+0000",
       "views": 181,
       "likes": 1,
-      "replies": 17,
+      "replies": 18,
       "reposts": 0,
       "quotes": 0
     },
