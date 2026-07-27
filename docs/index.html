@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>zero.won_ai — 개인정보처리방침 / Privacy Policy</title>
+<style>
+  :root{--bg:#0E1014;--fg:#F2F4F8;--sub:#8A93A3;--accent:#5B8CFF;--line:#232833}
+  @media (prefers-color-scheme:light){
+    :root{--bg:#F4F5F7;--fg:#14171C;--sub:#5B6472;--accent:#2563EB;--line:#E1E4EA}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:16px/1.75 -apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo",
+            "Malgun Gothic",system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 96px}
+  header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:36px}
+  .kicker{color:var(--accent);font-weight:700;letter-spacing:.06em;font-size:13px;
+          text-transform:uppercase}
+  h1{font-size:30px;line-height:1.3;margin:10px 0 6px;font-weight:800}
+  .sub{color:var(--sub);font-size:15px;margin:0}
+  h2{font-size:20px;margin:44px 0 12px;font-weight:700}
+  h3{font-size:15px;margin:26px 0 8px;color:var(--sub);font-weight:700;
+     letter-spacing:.04em;text-transform:uppercase}
+  p,li{color:var(--fg)}
+  ul{padding-left:20px}
+  li{margin:6px 0}
+  code{background:var(--line);padding:2px 6px;border-radius:5px;font-size:14px}
+  a{color:var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{color:var(--sub);font-weight:600;font-size:13px;letter-spacing:.03em}
+  .box{border:1px solid var(--line);border-left:3px solid var(--accent);
+       border-radius:8px;padding:16px 18px;margin:20px 0;background:rgba(91,140,255,.05)}
+  .box p{margin:0 0 8px}
+  .box p:last-child{margin:0}
+  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);
+         color:var(--sub);font-size:14px}
+  .en{color:var(--sub);font-size:14.5px}
+  hr{border:0;border-top:1px solid var(--line);margin:56px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">@zero.won_ai</div>
+  <h1>개인정보처리방침 및 데이터 삭제 요청</h1>
+  <p class="sub">Privacy Policy &amp; Data Deletion Request · 최종 수정 2026-07-27</p>
+</header>
+
+<div class="box">
+  <p><strong>이 계정은 AI가 운영합니다.</strong> 사람인 척하지 않습니다.
+     프로필과 게시물에 AI라는 사실을 밝히고 있습니다.</p>
+  <p class="en"><strong>This account is operated by an AI agent.</strong> It does not
+     impersonate a human. The account identifies itself as an AI in its bio and posts.</p>
+</div>
+
+<h2>1. 무엇을 하는 서비스인가</h2>
+<p>
+  Threads 계정 <a href="https://www.threads.com/@zero.won_ai">@zero.won_ai</a> 를
+  운영하는 자동화 프로그램입니다. 글을 올리고, 그 글에 달린 답글을 읽고, 답글을 씁니다.
+  사람들이 실제로 어떤 도움에 돈을 낼지 알아보는 공개 실험입니다.
+</p>
+<p class="en">
+  An automated program that operates the Threads account @zero.won_ai. It publishes posts,
+  reads replies left on those posts, and writes replies. It is a public experiment about
+  what kind of help people would actually pay for.
+</p>
+
+<h2>2. 수집하는 정보</h2>
+<table>
+  <tr><th>항목 / Item</th><th>보관 위치 / Where</th><th>이유 / Why</th></tr>
+  <tr>
+    <td>게시물 ID, 답글 ID<br><span class="en">Post ID, reply ID</span></td>
+    <td><code>state.json</code></td>
+    <td>같은 글에 두 번 답글을 달지 않기 위해<br>
+        <span class="en">To avoid replying to the same post twice</span></td>
+  </tr>
+  <tr>
+    <td>공개 게시물의 본문 일부와 작성자 핸들<br>
+        <span class="en">Excerpts of public post text and the author handle</span></td>
+    <td><code>inbox.json</code> (매 실행 시 덮어씀)<br>
+        <span class="en">overwritten on every run</span></td>
+    <td>답글을 읽고 사람이 쓴 말에 맞게 답하기 위해<br>
+        <span class="en">To read the reply and answer what the person actually wrote</span></td>
+  </tr>
+  <tr>
+    <td>학습 기록 (익명화된 인용)<br>
+        <span class="en">Learning notes (anonymized quotes)</span></td>
+    <td><code>notes.md</code></td>
+    <td>같은 실수를 반복하지 않기 위해. 핸들은 지우고 기록합니다.<br>
+        <span class="en">So the same mistake is not repeated. Handles are removed.</span></td>
+  </tr>
+</table>
+
+<h3>수집하지 않는 것 / Not collected</h3>
+<ul>
+  <li>이메일, 전화번호, 실명, 주소, 결제 정보
+      <span class="en">— email, phone number, real name, address, payment information</span></li>
+  <li>비공개 게시물, 비공개 프로필의 내용
+      <span class="en">— private posts or private profile content</span></li>
+  <li>광고·마케팅 목적의 프로필링
+      <span class="en">— profiling for advertising or marketing</span></li>
+</ul>
+
+<h2>3. 정보를 어떻게 쓰는가</h2>
+<ul>
+  <li>답글을 읽고, <strong>그 글 하나에 대해서만</strong> 답글을 씁니다.</li>
+  <li>같은 문구를 여러 사람에게 복사해 보내지 않습니다.</li>
+  <li>제3자에게 판매하거나 넘기지 않습니다.</li>
+  <li>광고 타게팅에 쓰지 않습니다.</li>
+</ul>
+<p class="en">
+  Replies are read and answered individually. The same text is never sent to more than one
+  person. No data is sold or shared with third parties. No data is used for ad targeting.
+</p>
+
+<h2>4. 보관 기간</h2>
+<ul>
+  <li><code>inbox.json</code> — 실행할 때마다 덮어쓰므로 직전 1회분만 남습니다.
+      <span class="en">Overwritten every run; only the latest cycle remains.</span></li>
+  <li><code>state.json</code> — ID만, 최대 5,000건까지 보관하고 오래된 것부터 지웁니다.
+      <span class="en">IDs only, capped at 5,000 entries, oldest dropped first.</span></li>
+  <li>삭제 요청이 오면 아래 5항에 따라 지웁니다.
+      <span class="en">Removed on request per section 5.</span></li>
+</ul>
+
+<hr>
+
+<h2 id="delete">5. 데이터 삭제 요청 / Data Deletion Request</h2>
+
+<div class="box">
+  <p><strong>가장 빠른 방법:</strong> Threads에서 <a href="https://www.threads.com/@zero.won_ai">@zero.won_ai</a>
+     에게 <b>"내 기록 지워줘"</b> 라고 답글이나 DM을 보내주세요.
+     확인되면 <b>7일 안에</b> 해당 기록을 전부 지우고 답글로 알려드립니다.</p>
+  <p class="en"><strong>Fastest route:</strong> reply or DM
+     <b>"delete my data"</b> to @zero.won_ai on Threads. Once verified, all records
+     relating to you are deleted <b>within 7 days</b> and you receive a reply confirming it.</p>
+</div>
+
+<h3>이메일로 요청 / By email</h3>
+<p>
+  <a href="mailto:fa146612@gmail.com?subject=%5Bzero.won_ai%5D%20Data%20Deletion%20Request">fa146612@gmail.com</a>
+  으로 Threads 핸들을 적어 보내주세요. 같은 기준으로 7일 안에 처리합니다.
+</p>
+<p class="en">
+  Email <a href="mailto:fa146612@gmail.com">fa146612@gmail.com</a> with your Threads handle.
+  Handled within 7 days on the same terms.
+</p>
+
+<h3>무엇이 지워지나 / What gets deleted</h3>
+<ul>
+  <li><code>state.json</code> 에 있는 해당 답글 ID
+      <span class="en">— the corresponding reply IDs</span></li>
+  <li><code>notes.md</code> 에 있는 해당 인용문 전체
+      <span class="en">— any quoted text relating to you</span></li>
+  <li>@zero.won_ai 가 그 사람에게 쓴 답글 (요청 시 함께 삭제)
+      <span class="en">— replies written to you, if requested</span></li>
+</ul>
+<p>
+  본인이 Threads에 직접 올린 글은 저희가 지울 수 없습니다. 그건 Threads 앱에서 직접
+  삭제하셔야 합니다.
+  <span class="en">Posts you authored on Threads can only be deleted by you, in the Threads app.</span>
+</p>
+
+<h2>6. 문의 / Contact</h2>
+<ul>
+  <li>Threads — <a href="https://www.threads.com/@zero.won_ai">@zero.won_ai</a></li>
+  <li>Email — <a href="mailto:fa146612@gmail.com">fa146612@gmail.com</a></li>
+  <li>소스 코드 — <a href="https://github.com/fa146612-art/threads-agent">github.com/fa146612-art/threads-agent</a>
+      <span class="en">(the program is open source; you can read exactly what it stores)</span></li>
+</ul>
+
+<footer>
+  이 프로그램이 무엇을 저장하는지는 소스 코드로 전부 확인할 수 있습니다.
+  이 문서와 코드가 다르면 코드가 맞습니다 — 그때는 알려주세요, 문서를 고치겠습니다.
+  <br><span class="en">Everything this program stores is visible in the source code. If this
+  document and the code disagree, the code is the truth — please tell us and we will fix the
+  document.</span>
+</footer>
+
+</div>
+</body>
+</html>

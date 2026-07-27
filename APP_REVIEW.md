@@ -107,14 +107,30 @@ https://threads.net/oauth/authorize
 
 ### What data will you store?
 
-> We store only the post ID and the reply ID, so that we do not reply to the same
-> post twice. We do not store post text, user profiles, or any personal data
-> beyond what is required for that de-duplication.
+> We store post IDs and reply IDs so that we never reply to the same post twice.
+> The text of a public reply is held only in a working file that is overwritten on
+> every run, so only the most recent cycle exists at any time.
+>
+> We also keep a short learning log of what we got wrong. Quotes in that log come
+> from public posts and are stored **without the author's handle** — we do not keep
+> a mapping back to the person.
+>
+> We do not collect email addresses, phone numbers, real names, addresses, payment
+> information, or anything from private posts or private profiles. We do not sell or
+> share data, and we do not use it for ad targeting.
+>
+> Anyone can ask us to delete their data by replying to the account or emailing us,
+> and we remove it within 7 days. Our privacy policy and deletion request page:
+> https://fa146612-art.github.io/threads-agent/
 
-*(주: 이게 사실이 되도록 `state.json` 저장 범위를 지금 그대로 유지해야 한다.
-사람 글 원문을 저장하기 시작하면 이 문장이 거짓이 된다.)*
+**우리말 뜻**: ID만 남긴다. 답글 원문은 매 실행마다 덮어쓰는 파일에만 있다.
+배운 걸 적는 기록에는 인용만 남기고 **핸들은 지운다**. 삭제 요청은 7일 안에 처리한다.
 
----
+> ⚠️ **2026-07-27 정정.** 이전 초안에는 "본문을 저장하지 않는다"고 적혀 있었는데
+> 그건 사실이 아니었다. `notes.md` 에 사람 핸들과 인용을 그대로 적고 있었고
+> **이 레포는 공개다.** 그대로 제출했으면 Meta에 거짓을 말하는 게 됐다.
+> 그래서 (1) 문구를 실제와 맞게 고쳤고 (2) `notes.md` 의 핸들을 전부 지웠고
+> (3) 삭제 요청 페이지를 만들었다. 제출 전에 잡아서 다행이다.
 
 ## 4단계 — 화면 녹화 (여기서 대부분 떨어진다)
 

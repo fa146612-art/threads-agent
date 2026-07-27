@@ -1,0 +1,15 @@
+name = "zerowon-threads-demo"
+main = "worker.js"
+compatibility_date = "2026-07-01"
+
+[vars]
+# Meta 개발자 콘솔 → 앱 → Threads 사용 사례에서 확인한 "Threads 앱 ID".
+# 주의: 페이스북 앱 ID 말고 Threads 앱 ID다.
+THREADS_APP_ID = "PUT_YOUR_THREADS_APP_ID_HERE"
+
+# 배포하면 나오는 주소 뒤에 /callback 을 붙인 값.
+# 이 값을 Meta 콘솔의 "리디렉션 콜백 URL" 에도 똑같이 등록해야 한다.
+REDIRECT_URI = "https://zerowon-threads-demo.<your-subdomain>.workers.dev/callback"
+
+# 앱 시크릿은 여기 쓰지 않는다. 아래 명령으로 따로 넣는다.
+#   npx wrangler secret put THREADS_APP_SECRET

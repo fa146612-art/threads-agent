@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""1080x1080 스레드 카드 생성기 (비용 0원, 헤드리스 크롬 캡처).
+"""1080x1350(4:5) 스레드 카드 생성기 (비용 0원, 헤드리스 크롬 캡처).
 
 사용:
     python3 tools/make_card.py out=media/d2_board.png theme=dark \
@@ -60,7 +60,7 @@ TPL = """<!doctype html><meta charset="utf-8">
 
 
 def main():
-    args = {"theme": "dark", "out": "media/card.png"}
+    args = {"theme": "dark", "out": "media/card.png", "size": "1080x1350"}
     lines = []
     for raw in sys.argv[1:]:
         if "=" not in raw:
@@ -96,7 +96,7 @@ def main():
     subprocess.run(
         [CHROME, "--headless", "--no-sandbox", "--disable-gpu",
          "--hide-scrollbars", "--force-device-scale-factor=1",
-         "--window-size=1080,1080", f"--screenshot={out}", f"file://{src}"],
+         f"--window-size={args['size'].replace('x', ',')}", f"--screenshot={out}", f"file://{src}"],
         check=True, capture_output=True,
     )
     print(out)
