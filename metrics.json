@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-07-27T06:56:22.919166+00:00",
+  "updated_at": "2026-07-27T07:09:03.576456+00:00",
   "limits": {
     "quota_usage": 3,
     "config": {
       "quota_total": 250,
       "quota_duration": 86400
     },
-    "reply_quota_usage": 1,
+    "reply_quota_usage": 2,
     "reply_config": {
       "quota_total": 1000,
       "quota_duration": 86400
@@ -19,7 +19,7 @@
       "at": "2026-07-26T22:35:28+0000",
       "views": 169,
       "likes": 1,
-      "replies": 4,
+      "replies": 5,
       "reposts": 0,
       "quotes": 0
     },
