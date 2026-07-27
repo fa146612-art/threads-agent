@@ -64,3 +64,5 @@
 {"at": "2026-07-27T10:47:24.238861+00:00", "event": "sent", "type": "reply", "id": "18114884999494515"}
 {"at": "2026-07-27T10:47:26.924765+00:00", "event": "instagram", "comments": 0, "dms": 0}
 {"at": "2026-07-27T10:47:26.925135+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
+{"at": "2026-07-27T11:54:02.714241+00:00", "event": "instagram", "comments": 0, "dms": 0}
+{"at": "2026-07-27T11:54:02.715201+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 1}
