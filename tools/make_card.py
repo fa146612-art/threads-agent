@@ -38,7 +38,7 @@ TPL = """<!doctype html><meta charset="utf-8">
   @page {{ margin:0 }}
   html,body {{ margin:0; padding:0 }}
   body {{
-    width:1080px; height:1080px; background:{bg}; color:{fg};
+    width:1080px; height:1350px; background:{bg}; color:{fg};
     font-family:'Noto Sans CJK KR','Noto Sans KR',sans-serif;
     display:flex; flex-direction:column; justify-content:center;
     padding:96px 88px; box-sizing:border-box;
