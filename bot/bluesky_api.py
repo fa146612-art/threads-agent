@@ -142,3 +142,5 @@ class Bluesky:
     def profile(self):
         return self._req("GET", f"{BASE}/app.bsky.actor.getProfile",
                          params={"actor": self.did})
+
+# secrets 등록 확인용 트리거 2131
