@@ -5,8 +5,16 @@ import json, os, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from bluesky_api import Bluesky, BlueskyError
 
+import datetime
 OUT = pathlib.Path(__file__).parent.parent / "bsky_probe_result.json"
-out = {"checks": {}}
+_h = os.environ.get("BSKY_HANDLE", "")
+_p = os.environ.get("BSKY_PASSWORD", "")
+out = {
+    "ran_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+    "secrets": {"handle_len": len(_h), "password_len": len(_p),
+                "handle_tail": _h[-12:] if _h else ""},
+    "checks": {},
+}
 
 
 def check(name, fn):
@@ -25,7 +33,8 @@ try:
     b = Bluesky()
 except BlueskyError as e:
     print(f"로그인 실패: {e}")
-    OUT.write_text(json.dumps({"error": str(e)}, ensure_ascii=False, indent=2) + "\n")
+    out["error"] = str(e)
+    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n")
     sys.exit(0)
 
 print("=== 계정 ===")
