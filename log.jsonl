@@ -138,3 +138,7 @@
 {"at": "2026-07-28T22:35:45.522976+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}
 {"at": "2026-07-29T00:03:06.115188+00:00", "event": "instagram", "comments": 0, "dms": 0}
 {"at": "2026-07-29T00:03:06.115530+00:00", "event": "cycle_done", "sent": 0, "failed": 0, "new_replies": 0}
+{"at": "2026-07-29T03:51:15.105391+00:00", "event": "schedule_due", "count": 1}
+{"at": "2026-07-29T03:51:29.382392+00:00", "event": "sent", "type": "post", "id": "17958335499191095"}
+{"at": "2026-07-29T03:51:36.480055+00:00", "event": "instagram", "comments": 0, "dms": 0}
+{"at": "2026-07-29T03:51:36.480437+00:00", "event": "cycle_done", "sent": 1, "failed": 0, "new_replies": 0}

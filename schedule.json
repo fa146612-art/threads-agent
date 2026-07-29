@@ -2,14 +2,6 @@
   "items": [
     {
       "type": "post",
-      "format": "정보",
-      "topic_tag": "자영업",
-      "publish_after": "2026-07-29T03:30:00Z",
-      "image_url": "https://raw.githubusercontent.com/fa146612-art/threads-agent/main/media/info_demo.png",
-      "text": "가게 접을 때 나라에서 철거비 준다는 거 알아?\n\n평당 20만원, 최대 600만원.\n\n근데 여기서 제일 많이 놓치는 게 있어.\n\"철거 전 사진\"이 필수 서류야.\n\n이미 뜯어냈으면 증빙이 안 돼.\n\n접을 생각 있으면 뜯기 전에 사진부터 찍어.\n그 사진 한 장이 600만원이야.\n\n(희망리턴패키지 원스톱폐업지원 / 소상공인24)"
-    },
-    {
-      "type": "post",
       "format": "실패고백",
       "topic_tag": "스레드",
       "publish_after": "2026-07-29T12:30:00Z",
