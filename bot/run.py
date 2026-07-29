@@ -146,8 +146,16 @@ def main():
     handled = set(state.get("handled_reply_ids", []))
 
     # ------------------------------------------------------------ 1. SEND
-    outbox = read(OUTBOX, {"items": []})
-    scheduled = due_items()
+    # PAUSED 파일이 있으면 아무것도 내보내지 않는다.
+    # 계정이 제한 상태일 때 발행을 계속하면 두 번째 위반이 찍힌다.
+    if (ROOT / "PAUSED").exists():
+        log("paused", note="PAUSED 파일 존재 - 발행 건너뜀")
+        print("PAUSED: 발행 중단 상태. 읽기만 수행한다.")
+        outbox = {"items": []}
+        scheduled = []
+    else:
+        outbox = read(OUTBOX, {"items": []})
+        scheduled = due_items()
     if scheduled:
         outbox = {"items": outbox.get("items", []) + scheduled}
         log("schedule_due", count=len(scheduled))
