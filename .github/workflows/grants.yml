@@ -9,12 +9,7 @@ on:
         description: "probe 또는 fetch"
         required: false
         default: "probe"
-  push:
-    paths:
-      - "bot/grants.py"
-      - ".github/workflows/grants.yml"
-  schedule:
-    - cron: "40 21 * * *"   # 06:40 KST 매일 수집
+  # 2026-07-30 전면 중단 (오수원님 지시). cron·push 트리거 제거, 수동 실행만.
 
 permissions:
   contents: write

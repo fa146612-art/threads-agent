@@ -7,11 +7,7 @@ on:
         description: "1이면 읽기만, 0이면 실제로 글을 하나 써본다"
         required: false
         default: "1"
-  push:
-    paths:
-      - "bot/bluesky_api.py"
-      - "bot/bsky_probe.py"
-      - ".github/workflows/bsky_probe.yml"
+  # 2026-07-30 중단: push 트리거 제거 (수동 실행만)
 
 permissions:
   contents: write

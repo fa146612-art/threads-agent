@@ -14,10 +14,7 @@ on:
         description: "삭제를 시험할 게시물 id (비우면 건너뜀)"
         required: false
         default: ""
-  push:
-    paths:
-      - "bot/probe_search.py"
-      - ".github/workflows/probe.yml"
+  # 2026-07-30 중단: push 트리거 제거 (수동 실행만)
 
 permissions:
   contents: write

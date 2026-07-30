@@ -10,10 +10,7 @@ on:
         description: "video 또는 voices"
         required: false
         default: "video"
-  push:
-    paths:
-      - "video/**"
-      - ".github/workflows/video.yml"
+  # 2026-07-30 중단: push 트리거 제거 (수동 실행만)
 
 permissions:
   contents: write

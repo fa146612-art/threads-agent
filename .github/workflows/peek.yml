@@ -9,10 +9,7 @@ on:
         description: "볼 사람의 핸들"
         required: false
         default: "juvin950"
-  push:
-    paths:
-      - "bot/peek.py"
-      - ".github/workflows/peek.yml"
+  # 2026-07-30 중단: push 트리거 제거 (수동 실행만)
 
 permissions:
   contents: write

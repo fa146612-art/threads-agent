@@ -1,18 +1,10 @@
 name: threads-agent
 
+# 2026-07-30 전면 중단 (오수원님 지시).
+# 자동 실행(cron)과 push 트리거를 모두 제거했다. 손으로 실행할 때만 돈다.
+# 재개하려면 아래 schedule/push 블록을 다시 살리고 루트의 PAUSED 파일을 지운다.
 on:
-  schedule:
-    # every 30 minutes
-    - cron: "*/30 * * * *"
-  workflow_dispatch: {}      # lets you run it by hand from the Actions tab
-  push:
-    # only when the code changes - the agent's own state commits must not
-    # retrigger the workflow, or it would loop forever
-    paths:
-      - "bot/**"
-      - ".github/workflows/**"
-      - "outbox.json"        # queueing a post publishes it within a minute
-      - "media/**"
+  workflow_dispatch: {}
 
 permissions:
   contents: write
